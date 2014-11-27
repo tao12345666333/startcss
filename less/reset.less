@@ -1,0 +1,422 @@
+@charset "UTF-8";
+
+/*
+ *****************************************************************
+ * BASE
+ *****************************************************************
+ */
+
+// BASE values : 适配布局的设计
+@basefont : 14;
+@lineheight-value : 1.2;
+
+// fonts
+@font-family : 'Arial, sans-serif';
+
+// colors
+@color-links : #428bca; //蓝色
+@color-hover : #A2122F; //深红
+@color-alert : #000;//黑
+
+// widths
+@input-defaut-size : 250px;
+@lable-defaut-width : 200px;
+
+// LESS functions
+
+.pxtoem (@fontsize) {font-size: (@fontsize / @basefont) + 0em;}
+
+.line (@fontsize) {line-height: @lineheight-value *2 / (@fontsize / @basefont) + 0em}
+
+.grid (@number) {width: (100%-(@gutter*(@number - 1))) / @number;}
+
+/* 基于 http://soqr.fr/vertical-rhythm/ thanks @goetter & @eQRoeil */
+
+
+// rounding value is for number of digits after comma => 10000 => 1.6667 ; 100000 => 1.13374
+.flow_hx(@font-size, @base-font: @basefont, @base-height: @lineheight-value, @rounding-value: 10000) {
+
+  @coef: ceil(1 / (@base-height * @base-font / @font-size));
+  @other_coef: ceil(@base-height * @base-font / @font-size);
+  @size: (@font-size / @base-font) + 0em;
+  @height: (@base-font * @base-height / @font-size);
+  @mar-top: (@height * @coef );
+
+font-size: round(@size * @rounding-value) / @rounding-value;
+line-height: round(@height * @coef * @rounding-value) / @rounding-value;
+margin: ( round(@mar-top*@rounding-value)/@rounding-value * @other_coef + 0em) 0 (round(@mar-top*@rounding-value)/@rounding-value/2 * @other_coef + 0em) 0;
+
+}
+
+
+// for smaller, bigger, etc. classes
+.flow_other(@font-size, @base-font: @basefont, @base-height: @lineheight-value, @rounding-value: 10000) {
+
+
+  @coef: ceil(1 / (@base-height * @base-font / @font-size));
+  @other_coef: ceil(@base-height * @base-font / @font-size);
+  @size: (@font-size / @base-font) + 0em;
+  @height: (@base-font * @base-height / @font-size);
+  @mar-top: (@height * @coef );
+
+font-size: round(@size * @rounding-value) / @rounding-value;
+line-height: round(@height * @coef * @rounding-value) / @rounding-value;
+margin: ( round(@mar-top*@rounding-value)/@rounding-value + 0em) 0;
+
+
+}
+
+
+/*
+ *****************************************************************
+ * reset
+ *****************************************************************
+ */
+
+/* for HTML 5 */
+article, aside, datagrid, datalist, details, dialog, figure, footer, header, main, menu, nav, section { display: block; }
+audio, canvas, progress, video { display: inline-block; }
+abbr, eventsource, mark, meter, time, output, bb { display: inline; }
+
+/* to comment/fallback if you care about IE<8 */
+html { box-sizing: border-box; }
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* reset minimum */
+html, body, blockquote, ul, ol, form, button { margin: 0; padding: 0; }
+button { border: 0; }
+p, ul, ol, dl, blockquote, pre, td, th, label, textarea {
+  font-size: 1em;
+  line-height: @lineheight-value;
+  margin: (@lineheight-value + 0em) 0;
+}
+
+/* fix display img/iframe */
+img,
+iframe { vertical-align: middle; }
+
+ul, ol { padding-left: 2em; }
+
+
+/* base font size at 10px */
+html {
+  font-size: 62.5%;
+  /* IE9-IE11 math fixing. See http://bit.ly/1g4X0bX */
+  /* Thanks to @guardian, @victorbritopro, @eQRoeil & Knacss */
+  font-size: calc(1em * 0.625);
+}
+body {
+  background: #fff;
+  color: #333;
+  font-family: @font-family;
+  font-size: (@basefont / 10) + 0em;
+  line-height: @lineheight-value;
+}
+
+/* 基于 https://github.com/nico3333fr/ROCSSTI thanks @nico3333fr*/
+
+/*
+ *****************************************************************
+ * fonts && title
+ *****************************************************************
+ */
+h1,
+.h1 {
+  display: block;
+  .flow_hx(26); // equiv 26px
+  font-weight: normal;
+}
+h2,
+.h2 {
+  display: block;
+  .flow_hx(24); // equiv 24px
+  font-weight: normal;
+}
+h3,
+.h3 {
+  display: block;
+  .flow_hx(22); // equiv 22px
+  font-weight: normal;
+}
+h4,
+.h4 {
+  display: block;
+  .flow_hx(20); // equiv 20px
+  font-weight: normal;
+}
+h5,
+.h5 {
+  display: block;
+  .flow_hx(18); // equiv 18px
+  font-weight: normal;
+}
+h6,
+.h6 {
+  display: block;
+  .flow_hx(16); // equiv 16px
+  font-weight: normal;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+/* other useful classes */
+.smaller {
+  .flow_other(10); // equiv 10px
+}
+.small {
+  .flow_other(12); // equiv 12px
+}
+.big {
+  .flow_other(16); // equiv 16px
+}
+.bigger {
+  .flow_other(18); // equiv 18px
+}
+.biggest {
+  .flow_other(20); // equiv 20px
+}
+
+
+/*
+ *****************************************************************
+ * utils class style
+ *****************************************************************
+ */
+
+/* remove margin on first child */
+h1:first-child,.h1:first-child,
+h2:first-child,.h2:first-child,
+h3:first-child,.h3:first-child,
+h4:first-child,.h4:first-child,
+h5:first-child,.h5:first-child,
+h6:first-child,.h6:first-child {
+  margin-top: 0;
+}
+
+p:last-child,
+ul:last-child,
+ol:last-child,
+dl:last-child,
+blockquote:last-child,
+pre:last-child,
+table:last-child {
+  margin-bottom: 0;
+}
+
+/* text aligns */
+.alignright  { text-align: right; }
+.aligncenter { text-align: center; }
+.alignleft   { text-align: left; }
+.aligntop    { vertical-align: top; }
+.alignbottom { vertical-align: bottom; }
+.alignmiddle { vertical-align: middle; }
+
+
+/*
+ *****************************************************************
+ * links && icons
+ *****************************************************************
+ */
+
+/* links */
+a {
+  color: @color-links;
+  cursor: pointer;
+
+  &:focus,
+  &:hover,
+  &:active {
+    color: @color-hover;
+  }
+}
+
+a:link img,
+a:visited img,
+img {
+  border-style: none;
+}
+
+/*
+ *****************************************************************
+ * show
+ *****************************************************************
+ */
+
+
+img,
+blockquote,
+textarea,
+input {
+  height: auto;
+  max-width: 100%;
+}
+
+/* some floattings */
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.clear {
+  clear: both;
+}
+.clearleft {
+  clear: left;
+}
+.clearright {
+  clear: right;
+}
+.clearhidden {
+  clear: both;
+  margin: 0;
+  padding: 0;
+  visibility: hidden;
+}
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* table-design in CSS */
+.row {
+  display: table;
+  table-layout: fixed;
+}
+.col {
+  display: table-cell;
+  vertical-align: top;
+}
+.col-noalign {
+  display: table-cell;
+}
+
+/* to relativize */
+.relative {
+  position: relative;
+}
+
+/* centered block */
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*
+ *****************************************************************
+ * forms
+ *****************************************************************
+ */
+
+/* makes you want to click on */
+label,
+button,
+input[type="submit"],
+input[type="button"],
+input[type="reset"] {
+  cursor: pointer;
+}
+
+/* avoid dummy resize */
+textarea {
+  resize: vertical;
+}
+
+label,
+button,
+input,
+select {
+  vertical-align: middle;
+}
+
+/* to adapt to your design */
+input,
+select,
+textarea {
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: .5em;
+  width: @input-defaut-size;
+  /** fix typo inputs **/
+  font-family: inherit;
+  font-size: 1em;
+}
+
+/* for field texts */
+.label {
+  display: inline-block;
+}
+
+/* to adapt to your design */
+.button {
+  background: #fff;
+  border-radius: 5px;
+  -webkit-box-shadow: 1px 1px 1px #ddd;
+  box-shadow: 1px 1px 1px #ddd;
+  color: #000;
+}
+
+/*
+ * avoids dimensioning for radio, checkboxes and images
+ * and a different display on IE
+ */
+input[type="radio"],
+input[type="checkbox"],
+input[type="image"] {
+  background-color: transparent;
+  border: 0;
+  width: auto;
+}
+
+/* to cancel input sizing or other if needed */
+.auto {
+  width: auto;
+}
+
+/* error or confirmation messages */
+.alert,
+.alert input,
+.alert textarea,
+.alert select {
+  color: @color-alert;
+  font-weight: bold;
+}
+/* .redborder is only used to debug */
+.alert input,
+.alert textarea,
+.alert select,
+.redborder {
+  border: 1px solid @color-alert;
+}
+.alert img {
+  border: 0;
+}
+
+/*
+ * can be completed with HTML5 required attribute
+ * example with a color, remember not only displaying information with it
+ */
+select:required:invalid,
+input:required:invalid,
+input:focus:invalid,
+textarea:required:invalid,
+textarea:focus:invalid {
+  background: #fef6f6;
+  -moz-box-shadow: none;
+}
+
+input:focus:required:valid,
+textarea:focus:required:valid,
+select:focus:required:valid {
+  background: #efe;
+  -moz-box-shadow: none;
+}
+
+//base on https://github.com/nico3333fr/ROCSSTI
