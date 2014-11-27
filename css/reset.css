@@ -1,1 +1,414 @@
-@charset "UTF-8";article,aside,datagrid,datalist,details,dialog,figure,footer,header,main,menu,nav,section{display:block}audio,canvas,progress,video{display:inline-block}abbr,eventsource,mark,meter,time,output,bb{display:inline}html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}html,body,blockquote,ul,ol,form,button{margin:0;padding:0}button{border:0}p,ul,ol,dl,blockquote,pre,td,th,label,textarea{font-size:1em;line-height:1.2;margin:1.2em 0}img,iframe{vertical-align:middle}ul,ol{padding-left:2em}html{font-size:62.5%;font-size:calc(.625em)}body{background:#fff;color:#333;font-family:'Arial, sans-serif';font-size:1.4em;line-height:1.2}h1,.h1{display:block;font-size:1.8571em;line-height:1.2923;margin:1.2923em 0 .64615em 0;font-weight:normal}h2,.h2{display:block;font-size:1.7143em;line-height:1.4;margin:1.4em 0 .7em 0;font-weight:normal}h3,.h3{display:block;font-size:1.5714em;line-height:1.5273;margin:1.5273em 0 .76365em 0;font-weight:normal}h4,.h4{display:block;font-size:1.4286em;line-height:1.68;margin:1.68em 0 .84em 0;font-weight:normal}h5,.h5{display:block;font-size:1.2857em;line-height:1.8667;margin:1.8667em 0 .93335em 0;font-weight:normal}h6,.h6{display:block;font-size:1.1429em;line-height:1.05;margin:2.1em 0 1.05em 0;font-weight:normal}.uppercase{text-transform:uppercase}.smaller{font-size:.7143em;line-height:1.68;margin:1.68em 0}.small{font-size:.8571em;line-height:1.4;margin:1.4em 0}.big{font-size:1.1429em;line-height:1.05;margin:1.05em 0}.bigger{font-size:1.2857em;line-height:1.8667;margin:1.8667em 0}.biggest{font-size:1.4286em;line-height:1.68;margin:1.68em 0}h1:first-child,.h1:first-child,h2:first-child,.h2:first-child,h3:first-child,.h3:first-child,h4:first-child,.h4:first-child,h5:first-child,.h5:first-child,h6:first-child,.h6:first-child{margin-top:0}p:last-child,ul:last-child,ol:last-child,dl:last-child,blockquote:last-child,pre:last-child,table:last-child{margin-bottom:0}.alignright{text-align:right}.aligncenter{text-align:center}.alignleft{text-align:left}.aligntop{vertical-align:top}.alignbottom{vertical-align:bottom}.alignmiddle{vertical-align:middle}a{color:#428bca;cursor:pointer}a:focus,a:hover,a:active{color:#a2122f}a:link img,a:visited img,img{border-style:none}img,blockquote,textarea,input{height:auto;max-width:100%}.left{float:left}.right{float:right}.clear{clear:both}.clearleft{clear:left}.clearright{clear:right}.clearhidden{clear:both;margin:0;padding:0;visibility:hidden}.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}.row{display:table;table-layout:fixed}.col{display:table-cell;vertical-align:top}.col-noalign{display:table-cell}.relative{position:relative}.center{margin-left:auto;margin-right:auto}label,button,input[type="submit"],input[type="button"],input[type="reset"]{cursor:pointer}textarea{resize:vertical}label,button,input,select{vertical-align:middle}input,select,textarea{border:1px solid #000;border-radius:5px;padding:.5em;width:250px;font-family:inherit;font-size:1em}.label{display:inline-block}.button{background:#fff;border-radius:5px;-webkit-box-shadow:1px 1px 1px #ddd;box-shadow:1px 1px 1px #ddd;color:#000}input[type="radio"],input[type="checkbox"],input[type="image"]{background-color:transparent;border:0;width:auto}.auto{width:auto}.alert,.alert input,.alert textarea,.alert select{color:#000;font-weight:bold}.alert input,.alert textarea,.alert select,.redborder{border:1px solid #000}.alert img{border:0}select:required:invalid,input:required:invalid,input:focus:invalid,textarea:required:invalid,textarea:focus:invalid{background:#fef6f6;-moz-box-shadow:none}input:focus:required:valid,textarea:focus:required:valid,select:focus:required:valid{background:#efe;-moz-box-shadow:none}
+@charset "UTF-8";
+/*
+ *****************************************************************
+ * BASE
+ *****************************************************************
+ */
+/* 基于 http://soqr.fr/vertical-rhythm/ thanks @goetter & @eQRoeil */
+/*
+ *****************************************************************
+ * reset
+ *****************************************************************
+ */
+/* for HTML 5 */
+article,
+aside,
+datagrid,
+datalist,
+details,
+dialog,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section {
+  display: block;
+}
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+}
+abbr,
+eventsource,
+mark,
+meter,
+time,
+output,
+bb {
+  display: inline;
+}
+/* to comment/fallback if you care about IE<8 */
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+/* reset minimum */
+html,
+body,
+blockquote,
+ul,
+ol,
+form,
+button {
+  margin: 0;
+  padding: 0;
+}
+button {
+  border: 0;
+}
+p,
+ul,
+ol,
+dl,
+blockquote,
+pre,
+td,
+th,
+label,
+textarea {
+  font-size: 1em;
+  line-height: 1.2;
+  margin: 1.2em 0;
+}
+/* fix display img/iframe */
+img,
+iframe {
+  vertical-align: middle;
+}
+ul,
+ol {
+  padding-left: 2em;
+}
+/* base font size at 10px */
+html {
+  font-size: 62.5%;
+  /* IE9-IE11 math fixing. See http://bit.ly/1g4X0bX */
+  /* Thanks to @guardian, @victorbritopro, @eQRoeil & Knacss */
+  font-size: calc(0.625em);
+}
+body {
+  background: #fff;
+  color: #333;
+  font-family: 'Arial, sans-serif';
+  font-size: 1.4em;
+  line-height: 1.2;
+}
+/* 基于 https://github.com/nico3333fr/ROCSSTI thanks @nico3333fr*/
+/*
+ *****************************************************************
+ * fonts && title
+ *****************************************************************
+ */
+h1,
+.h1 {
+  display: block;
+  font-size: 1.8571em;
+  line-height: 1.2923;
+  margin: 1.2923em 0 0.64615em 0;
+  font-weight: normal;
+}
+h2,
+.h2 {
+  display: block;
+  font-size: 1.7143em;
+  line-height: 1.4;
+  margin: 1.4em 0 0.7em 0;
+  font-weight: normal;
+}
+h3,
+.h3 {
+  display: block;
+  font-size: 1.5714em;
+  line-height: 1.5273;
+  margin: 1.5273em 0 0.76365em 0;
+  font-weight: normal;
+}
+h4,
+.h4 {
+  display: block;
+  font-size: 1.4286em;
+  line-height: 1.68;
+  margin: 1.68em 0 0.84em 0;
+  font-weight: normal;
+}
+h5,
+.h5 {
+  display: block;
+  font-size: 1.2857em;
+  line-height: 1.8667;
+  margin: 1.8667em 0 0.93335em 0;
+  font-weight: normal;
+}
+h6,
+.h6 {
+  display: block;
+  font-size: 1.1429em;
+  line-height: 1.05;
+  margin: 2.1em 0 1.05em 0;
+  font-weight: normal;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+/* other useful classes */
+.smaller {
+  font-size: 0.7143em;
+  line-height: 1.68;
+  margin: 1.68em 0;
+}
+.small {
+  font-size: 0.8571em;
+  line-height: 1.4;
+  margin: 1.4em 0;
+}
+.big {
+  font-size: 1.1429em;
+  line-height: 1.05;
+  margin: 1.05em 0;
+}
+.bigger {
+  font-size: 1.2857em;
+  line-height: 1.8667;
+  margin: 1.8667em 0;
+}
+.biggest {
+  font-size: 1.4286em;
+  line-height: 1.68;
+  margin: 1.68em 0;
+}
+/*
+ *****************************************************************
+ * utils class style
+ *****************************************************************
+ */
+/* remove margin on first child */
+h1:first-child,
+.h1:first-child,
+h2:first-child,
+.h2:first-child,
+h3:first-child,
+.h3:first-child,
+h4:first-child,
+.h4:first-child,
+h5:first-child,
+.h5:first-child,
+h6:first-child,
+.h6:first-child {
+  margin-top: 0;
+}
+p:last-child,
+ul:last-child,
+ol:last-child,
+dl:last-child,
+blockquote:last-child,
+pre:last-child,
+table:last-child {
+  margin-bottom: 0;
+}
+/* text aligns */
+.alignright {
+  text-align: right;
+}
+.aligncenter {
+  text-align: center;
+}
+.alignleft {
+  text-align: left;
+}
+.aligntop {
+  vertical-align: top;
+}
+.alignbottom {
+  vertical-align: bottom;
+}
+.alignmiddle {
+  vertical-align: middle;
+}
+/*
+ *****************************************************************
+ * links && icons
+ *****************************************************************
+ */
+/* links */
+a {
+  color: #428bca;
+  cursor: pointer;
+}
+a:focus,
+a:hover,
+a:active {
+  color: #a2122f;
+}
+a:link img,
+a:visited img,
+img {
+  border-style: none;
+}
+/*
+ *****************************************************************
+ * layout
+ *****************************************************************
+ */
+img,
+blockquote,
+textarea,
+input {
+  height: auto;
+  max-width: 100%;
+}
+/* some floattings */
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.clear {
+  clear: both;
+}
+.clearleft {
+  clear: left;
+}
+.clearright {
+  clear: right;
+}
+.clearhidden {
+  clear: both;
+  margin: 0;
+  padding: 0;
+  visibility: hidden;
+}
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+/* table-design in CSS */
+.row {
+  display: table;
+  table-layout: fixed;
+}
+.col {
+  display: table-cell;
+  vertical-align: top;
+}
+.col-noalign {
+  display: table-cell;
+}
+/* to relativize */
+.relative {
+  position: relative;
+}
+/* centered block */
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+/*
+ *****************************************************************
+ * forms
+ *****************************************************************
+ */
+/* makes you want to click on */
+label,
+button,
+input[type="submit"],
+input[type="button"],
+input[type="reset"] {
+  cursor: pointer;
+}
+/* avoid dummy resize */
+textarea {
+  resize: vertical;
+}
+label,
+button,
+input,
+select {
+  vertical-align: middle;
+}
+/* to adapt to your design */
+input,
+select,
+textarea {
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: .5em;
+  width: 250px;
+  /** fix typo inputs **/
+  font-family: inherit;
+  font-size: 1em;
+}
+/* for field texts */
+.label {
+  display: inline-block;
+}
+/* to adapt to your design */
+.button {
+  background: #fff;
+  border-radius: 5px;
+  -webkit-box-shadow: 1px 1px 1px #ddd;
+  box-shadow: 1px 1px 1px #ddd;
+  color: #000;
+}
+/*
+ * avoids dimensioning for radio, checkboxes and images
+ * and a different display on IE
+ */
+input[type="radio"],
+input[type="checkbox"],
+input[type="image"] {
+  background-color: transparent;
+  border: 0;
+  width: auto;
+}
+/* to cancel input sizing or other if needed */
+.auto {
+  width: auto;
+}
+/* error or confirmation messages */
+.alert,
+.alert input,
+.alert textarea,
+.alert select {
+  color: #000000;
+  font-weight: bold;
+}
+/* .redborder is only used to debug */
+.alert input,
+.alert textarea,
+.alert select,
+.redborder {
+  border: 1px solid #000000;
+}
+.alert img {
+  border: 0;
+}
+/*
+ * can be completed with HTML5 required attribute
+ * example with a color, remember not only displaying information with it
+ */
+select:required:invalid,
+input:required:invalid,
+input:focus:invalid,
+textarea:required:invalid,
+textarea:focus:invalid {
+  background: #fef6f6;
+  -moz-box-shadow: none;
+}
+input:focus:required:valid,
+textarea:focus:required:valid,
+select:focus:required:valid {
+  background: #efe;
+  -moz-box-shadow: none;
+}
