@@ -1,1 +1,1 @@
-#### start CSS to display web applications
+#### start CSS for display web applications
